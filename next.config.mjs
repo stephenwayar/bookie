@@ -3,7 +3,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    SERVER_URL: process.env.SERVER_URL,
+    MONGODB_URI: process.env.MONGODB_URI,
     ENCRYPTION_KEY: process.env.ENCRYPTION_KEY
   }
 };

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Logo() {
   return (
-    <Box>
+    <Box className="w-[150px]">
       <Image
         priority
         src={logo}

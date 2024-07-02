@@ -51,8 +51,8 @@ export default function Login() {
         email: errorData.message || 'An error occurred'
       })
     },
-    onSuccess: (res: { data: User }) => {
-      dispatch(setUser(res.data))
+    onSuccess: (res: User) => {
+      dispatch(setUser(res))
 
       form.reset();
       toast.success('Login successful')

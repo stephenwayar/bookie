@@ -1,15 +1,12 @@
-import { SERVER_URL } from "@/config/env";
 import axios, { AxiosInstance } from "axios";
 import { User, UserKey } from "@/redux/types/user.type";
 import { getCookieItem } from "@/helpers/functions/cookie";
 
 const http: AxiosInstance = axios.create({
-  baseURL: SERVER_URL,
   withCredentials: true,
 });
 
 const httpNoAuth: AxiosInstance = axios.create({
-  baseURL: SERVER_URL,
   withCredentials: false,
 });
 

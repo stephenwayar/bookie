@@ -8,7 +8,8 @@ export function encryptData(data: any): string {
   return encryptedData;
 }
 
-export function decryptData(encryptedData: string): any {
+export function decryptData(encryptedData: string | null): any {
+  if (!encryptedData) return null
   const decryptedData: string = ENCRYPTION_KEY ? CryptoJS.AES.decrypt(encryptedData, ENCRYPTION_KEY).toString(CryptoJS.enc.Utf8) : '';
   const data: any = JSON.parse(decryptedData);
 

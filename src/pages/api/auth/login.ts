@@ -4,24 +4,11 @@ import User from "@/backend/models/user";
 import { ENCRYPTION_KEY } from "@/config/env";
 import connectToDatabase from "@/backend/config/mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
-
-type ErrorResponse = {
-  success: boolean;
-  message: string
-}
-
-type DataResponse = {
-  id: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  access_token: string;
-};
+import { ErrorResponse, LoginDataResponse } from "@/backend/types/res.types";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ErrorResponse | DataResponse>,
+  res: NextApiResponse<ErrorResponse | LoginDataResponse>,
 ) {
   await connectToDatabase();
 

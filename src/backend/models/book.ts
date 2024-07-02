@@ -1,10 +1,5 @@
-import mongoose, { Schema, Document, Model } from 'mongoose';
-
-export interface IBook extends Document {
-  title: string;
-  author: mongoose.Schema.Types.ObjectId;
-  description: string
-}
+import mongoose, { Schema, Model } from 'mongoose';
+import { IBook } from '../types/model.types';
 
 const BookSchema: Schema<IBook> = new Schema({
   title: {

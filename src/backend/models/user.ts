@@ -1,15 +1,7 @@
+import { User } from '../types/model.types';
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
-export interface UserType extends Document {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  password: string;
-  books: mongoose.Schema.Types.ObjectId[]
-}
-
-const UserSchema: Schema<UserType> = new Schema({
+const UserSchema: Schema<User> = new Schema({
   firstName: {
     type: String,
     required: true,
@@ -51,6 +43,6 @@ UserSchema.set('toJSON', {
   }
 });
 
-const User: Model<UserType> = mongoose.models.User || mongoose.model<UserType>('User', UserSchema);
+const User: Model<User> = mongoose.models.User || mongoose.model<User>('User', UserSchema);
 
 export default User;

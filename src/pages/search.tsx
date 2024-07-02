@@ -2,7 +2,6 @@ import React from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Nav from "@/components/secondary/nav/Nav";
 import AppLayout from "@/layouts/common/AppLayout";
-import { getBooks } from "@/services/api/books";
 import SEOMetaTags from "@/components/secondary/common/SEOMetaTags";
 import MainLayout from "@/layouts/common/MainLayout";
 import MaxWidthLayout from "@/layouts/common/MaxWidthLayout";
@@ -12,6 +11,7 @@ import { truncateText } from "@/helpers/functions/truncateText";
 import EmptyState from "@/components/secondary/common/EmptyState";
 import { Book } from "@/components/secondary/book/Book";
 import BookCard from "@/components/secondary/book/Book";
+import { BASE_URL } from "@/config/env";
 
 export default function SearchPage({ result }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { query } = useRouter()
@@ -63,12 +63,19 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
 
   if (query) {
     try {
-      const books = await getBooks(query as string)
+      const res = await fetch(`${BASE_URL}/api/books?query=${query as string}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      const data = await res.json()
 
       return {
         props: {
           result: {
-            books
+            books: data.books
           }
         }
       };

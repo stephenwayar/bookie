@@ -2,11 +2,7 @@ import bcrypt from "bcryptjs";
 import User from "@/backend/models/user";
 import connectToDatabase from "@/backend/config/mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
-
-type ErrorResponse = {
-  success: boolean;
-  message: string
-}
+import { ErrorResponse } from "@/backend/types/res.types";
 
 export default async function handler(
   req: NextApiRequest,

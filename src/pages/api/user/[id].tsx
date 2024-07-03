@@ -1,8 +1,8 @@
-import Book from "@/backend/models/Book";
 import connectToDatabase from "@/backend/config/mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { ErrorResponse } from "@/backend/types/res.types";
 import { extractAndValidateToken } from "@/backend/middlewares/extractAndValidateToken";
+import User from "@/backend/models/User";
 
 async function GET(
   req: NextApiRequest,
@@ -16,20 +16,20 @@ async function GET(
     if (!id) {
       return res.status(400).json({
         success: false,
-        message: 'Book ID is required',
+        message: 'User ID is required',
       });
     }
 
-    const book = await Book.findById(id).populate('author');
+    const user = await User.findById(id).populate('users');
 
-    if (!book) {
+    if (!user) {
       return res.status(404).json({
         success: false,
-        message: 'Book not found',
+        message: 'User not found',
       });
     }
 
-    return res.status(200).json(book);
+    return res.status(200).json(user);
   } catch (error) {
     console.log('Internal server error ', error);
 
@@ -52,40 +52,29 @@ async function PUT(
     if (!decryptedToken) return
 
     const { id } = req.query;
-    const { title, description } = req.body;
+    const { firstName, lastName, phoneNumber } = req.body;
 
     if (!id) {
       return res.status(400).json({
         success: false,
-        message: 'Book ID is required',
+        message: 'User ID is required',
       });
     }
 
-    if (!title && !description) {
-      return res.status(400).json({
-        success: false,
-        message: 'Title or description is required',
-      });
-    }
-
-    const updatedFields: any = {};
-    if (title) updatedFields.title = title;
-    if (description) updatedFields.description = description;
-
-    const updatedBook = await Book.findByIdAndUpdate(
+    const updatedUser = await User.findByIdAndUpdate(
       id,
-      { $set: updatedFields },
+      { $set: { firstName, lastName, phoneNumber } },
       { new: true, runValidators: true }
-    ).populate('author');
+    )
 
-    if (!updatedBook) {
+    if (!updatedUser) {
       return res.status(404).json({
         success: false,
-        message: 'Book not found',
+        message: 'User not found',
       });
     }
 
-    return res.status(200).json(updatedBook);
+    return res.status(200).json(updatedUser);
   } catch (error) {
     console.log('Internal server error ', error);
 
@@ -112,16 +101,16 @@ async function DELETE(
     if (!id) {
       return res.status(400).json({
         success: false,
-        message: 'Book ID is required',
+        message: 'User ID is required',
       });
     }
 
-    const deletedBook = await Book.findByIdAndDelete(id);
+    const deletedUser = await User.findByIdAndDelete(id);
 
-    if (!deletedBook) {
+    if (!deletedUser) {
       return res.status(404).json({
         success: false,
-        message: 'Book not found',
+        message: 'User not found',
       });
     }
 

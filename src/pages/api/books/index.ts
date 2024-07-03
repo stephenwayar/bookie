@@ -1,9 +1,9 @@
-import Book from "@/backend/models/book";
+import Book from "@/backend/models/Book";
 import connectToDatabase from "@/backend/config/mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { ErrorResponse } from "@/backend/types/res.types";
 import { extractAndValidateToken } from "@/backend/middlewares/extractAndValidateToken";
- 
+
 async function GET(
   req: NextApiRequest,
   res: NextApiResponse<ErrorResponse | any>,
@@ -15,7 +15,7 @@ async function GET(
 
     // If a query is provided, perform a search and return top 5 matches
     if (query) {
-      const regex = new RegExp(query as string, 'i'); 
+      const regex = new RegExp(query as string, 'i');
 
       const searchResults = await Book.find({
         $or: [
@@ -106,7 +106,7 @@ async function POST(
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ErrorResponse>,
-) {  
+) {
   switch (req.method) {
     case "GET":
       return await GET(req, res);

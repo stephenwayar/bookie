@@ -16,7 +16,7 @@ export default function Nav() {
   const user = useAppSelector((state) => state.user.value)
 
   return (
-    <NavElement>
+    <NavElement className="border-b-2 border-neutral-200">
       <MainLayout>
         <MaxWidthLayout>
           <Flex className="h-[90px] space-x-10 items-center justify-between">

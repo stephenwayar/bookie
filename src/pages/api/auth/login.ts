@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import User from "@/backend/models/user";
+import User from "@/backend/models/User";
 import { ENCRYPTION_KEY } from "@/config/env";
 import connectToDatabase from "@/backend/config/mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -56,7 +56,7 @@ export default async function handler(
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
     });
-  } catch (error){
+  } catch (error) {
     console.log('Internal server error ', error);
 
     res.status(500).json({

@@ -1,3 +1,5 @@
+import { UserBook } from "./book.types";
+
 export type User = {
   id: string;
   firstName: string;
@@ -5,6 +7,7 @@ export type User = {
   email: string;
   phoneNumber: string;
   access_token: string;
+  books: UserBook[]
 }
 
 export type UserState = {

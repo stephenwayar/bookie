@@ -20,7 +20,13 @@ async function GET(
       });
     }
 
-    const user = await User.findById(id).populate('users');
+    const user = await User.findById(id).populate({
+      path: 'books',
+      populate: {
+        path: 'author',
+        model: 'User',
+      },
+    });
 
     if (!user) {
       return res.status(404).json({

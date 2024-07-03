@@ -3,6 +3,8 @@ import connectToDatabase from "@/backend/config/mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { ErrorResponse } from "@/backend/types/res.types";
 import { extractAndValidateToken } from "@/backend/middlewares/extractAndValidateToken";
+import User from "@/backend/models/User";
+import mongoose from "mongoose";
 
 async function GET(
   req: NextApiRequest,
@@ -22,7 +24,7 @@ async function GET(
           { title: { $regex: regex } },
           { description: { $regex: regex } }
         ]
-      }).limit(5);
+      }).populate('author').limit(5);
 
       return res.status(200).json({
         books: searchResults,
@@ -35,6 +37,7 @@ async function GET(
       const pageNumberNum = parseInt(pageNumber as string, 10);
 
       const books = await Book.find()
+        .populate('author')
         .skip((pageNumberNum - 1) * pageSizeNum)
         .limit(pageSizeNum);
 
@@ -71,16 +74,9 @@ async function POST(
   try {
     const decryptedToken = await extractAndValidateToken(req, res);
 
-    if (!decryptedToken) return
+    if (!decryptedToken) return;
 
     const { title, description } = req.body;
-
-    if (!title || !description) {
-      return res.status(400).json({
-        success: false,
-        message: "Title and description are required",
-      });
-    }
 
     const newBook = new Book({
       title,
@@ -90,9 +86,16 @@ async function POST(
 
     await newBook.save();
 
-    res.status(201).json({
-      book: newBook,
-    });
+    const user = await User.findById(decryptedToken.id);
+
+    if (user) {
+      user.books.push(newBook._id as mongoose.ObjectId);
+      await user.save();
+    }
+
+    const populatedBook = await Book.findById(newBook._id).populate('author');
+
+    res.status(201).json(populatedBook);
   } catch (error) {
     console.log('Internal server error ', error);
 

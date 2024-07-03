@@ -20,8 +20,8 @@ export default function AccountLayout({ children }: Props) {
           </Box>
 
           <Box className='lg:ml-[20rem] xl:ml-[25rem]'>
-            <Box className='lg:px-10 py-8'>
-              <Box className='lg:max-w-[50rem]'>
+            <Box className='lg:pl-10 pt-8 pb-20'>
+              <Box>
                 {children}
               </Box>
             </Box>

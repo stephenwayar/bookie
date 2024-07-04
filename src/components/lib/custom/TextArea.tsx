@@ -11,7 +11,6 @@ const TextArea: React.FC<Props> = ({
   label,
   className,
   onChange,
-  maxLength,
   disabled,
   value,
   placeholder,

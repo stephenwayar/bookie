@@ -9,6 +9,8 @@ export default function Home() {
       <SEOMetaTags title="Bookie | Home" />
       
       <Nav />
+
+      Hello
     </AppLayout>
   );
 }

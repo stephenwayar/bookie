@@ -10,7 +10,7 @@ export default function Home() {
       
       <Nav />
 
-      Hello
+      Hello https://bookie-psi.vercel.app
     </AppLayout>
   );
 }

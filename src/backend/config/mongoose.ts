@@ -1,10 +1,10 @@
 /* eslint-disable no-var */
 import mongoose, { Mongoose } from 'mongoose';
 import Review from '../models/Review';
-import Book from '@/backend/models/Book'; 
-import User from '@/backend/models/User';
+import Book from '../models/Book'; 
+import User from '../models/User';
 import { MONGODB_URI } from '@/config/env';
-import Rating from '@/backend/models/Rating';
+import Rating from '../models/Rating';
 
 if (!MONGODB_URI) {
   throw new Error('Please add your Mongo URI to .env.local');

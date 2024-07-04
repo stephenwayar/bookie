@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { Toaster } from 'react-hot-toast';
 
-type Props = { children: React.ReactNode }
+interface Props { children: React.ReactNode }
 
 export default function AppLayout({ children }: Props) {
   return (
@@ -19,8 +19,8 @@ export default function AppLayout({ children }: Props) {
       </Head>
 
       <Toaster
-        position="bottom-center"
         reverseOrder={false}
+        position="bottom-center"
       />
 
       {children}

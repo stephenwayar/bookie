@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { UserBook, UserBookState } from '../types/book.types';
+import type { Book, BookState } from '../types/book.types';
 
-const initialState: UserBookState = { value: [] };
+const initialState: BookState = { value: [] };
 
 export const booksSlice = createSlice({
   name: 'booksSlice',
   initialState,
   reducers: {
-    setBooks: (state: UserBookState, action: PayloadAction<UserBook[]>) => {
+    setBooks: (state: BookState, action: PayloadAction<Book[]>) => {
       state.value = action.payload
     },
   },

@@ -1,14 +1,14 @@
-import NavElement from "@/components/lib/custom/NavElement";
-import MainLayout from "@/layouts/common/MainLayout";
-import MaxWidthLayout from "@/layouts/common/MaxWidthLayout";
-import { Box, Burger, Flex, UnstyledButton } from "@mantine/core";
 import React from "react";
-import Logo from "../common/Logo";
 import Link from "next/link";
+import Search from "./Search";
+import Logo from "../common/Logo";
+import { useRouter } from "next/router";
 import { useDisclosure } from "@mantine/hooks";
 import { useAppSelector } from "@/redux/hooks";
-import Search from "./Search";
-import { useRouter } from "next/router";
+import MainLayout from "@/layouts/common/MainLayout";
+import NavElement from "@/components/lib/custom/NavElement";
+import MaxWidthLayout from "@/layouts/common/MaxWidthLayout";
+import { Box, Burger, Flex, UnstyledButton } from "@mantine/core";
 
 export default function Nav() {
   const { asPath } = useRouter()
@@ -26,16 +26,16 @@ export default function Nav() {
               </Link>
             </Box>
 
-            <Box className="lg:block hidden w-full max-w-xl">
+            <Box className="lg:block hidden w-full max-w-2xl">
               <Search />
             </Box>
 
             <Burger
-              className="lg:hidden"
               size='md'
               color='black'
               opened={opened}
               onClick={toggle}
+              className="lg:hidden"
             />
 
             <Box className="lg:block hidden">

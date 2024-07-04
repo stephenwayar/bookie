@@ -1,11 +1,11 @@
 import React from "react";
-import { Icon } from '@iconify/react';
-import { Text, Box, Flex, UnstyledButton } from '@mantine/core'
 import Link from "next/link";
-import { useHover } from '@mantine/hooks';
+import { Icon } from '@iconify/react';
 import { useRouter } from "next/router";
+import { useHover } from '@mantine/hooks';
+import { Text, Box, Flex, UnstyledButton } from '@mantine/core'
 
-type Props = {
+interface Props {
   text: string,
   icon: string,
   linkTarget: string

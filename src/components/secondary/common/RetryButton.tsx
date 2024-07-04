@@ -3,8 +3,8 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Box, Flex, Text, UnstyledButton } from "@mantine/core";
 
 interface Props {
-  failedTo: string;
   retryFn: any
+  failedTo: string;
 }
 
 export default function RetryButton({ failedTo, retryFn }: Props) {

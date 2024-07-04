@@ -1,20 +1,20 @@
 import React from 'react'
-import { Icon } from '@iconify/react';
-import Input from '../../lib/custom/Input';
-import { UseFormReturnType } from '@mantine/form';
-import { UseMutationResult } from '@tanstack/react-query';
-import { Box, Flex, UnstyledButton } from '@mantine/core';
-import Form from '@/components/lib/custom/Form';
-import { InitialValuesType } from '@/pages/account';
-import { UpdateProfileData } from '@/services/types/user.types';
-import avatar from '@/assets/imgs/avatar.png'
-import { AxiosError } from 'axios';
-import Image from 'next/image';
-import { UserKey } from '@/redux/types/user.type';
 import cookie from 'cookiejs';
-import { useAppDispatch } from '@/redux/hooks';
-import { setUser } from '@/redux/slices/userSlice';
+import Image from 'next/image';
+import { AxiosError } from 'axios';
+import { Icon } from '@iconify/react';
 import { useRouter } from 'next/router';
+import Input from '../../lib/custom/Input';
+import avatar from '@/assets/imgs/avatar.png'
+import { setUser } from '@/redux/slices/user';
+import { useAppDispatch } from '@/redux/hooks';
+import Form from '@/components/lib/custom/Form';
+import { UseFormReturnType } from '@mantine/form';
+import { UserKey } from '@/redux/types/user.types';
+import { InitialValuesType } from '@/pages/account';
+import { Box, Flex, UnstyledButton } from '@mantine/core';
+import { UseMutationResult } from '@tanstack/react-query';
+import { UpdateProfileData } from '@/services/types/user.types';
 
 interface Props {
   handleSubmit: (values: InitialValuesType) => void

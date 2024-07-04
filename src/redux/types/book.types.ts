@@ -1,12 +1,48 @@
-import { User } from "./user.type";
+import { User } from "./user.types";
 
-export type UserBook = {
+export interface Rating {
+  _id: string;
+  user: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    books: string[];
+    readingList: string[];
+  };
+  book: string;
+  rating: number;
+  __v: number;
+}
+
+export interface Review {
+  _id: string;
+  user: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    books: string[];
+    readingList: string[];
+  };
+  book: string;
+  review: string;
+  __v: number;
+}
+
+export type Book = {
+  author: User
   _id: string;
   title: string;
+  ratings: Rating[]
+  reviews: Review[]
   description: string
-  author: User
 }
 
-export type UserBookState = {
-  value: UserBook[]
-}
+export type QueryType = 'byName' | 'byAuthor';
+
+export type BookReviewsState = { value: Review[] }
+
+export type BookState = { value: Book[] }

@@ -1,6 +1,5 @@
+import { QueryType } from "../types/book.types";
 import { RootState } from "../types/root.types";
-
-export type QueryType = 'byName' | 'byAuthor';
 
 export const filterBooks = (state: RootState, query: { type: QueryType, value?: string }) => {
   if (!query.value) return state.books.value;

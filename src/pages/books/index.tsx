@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import Nav from "@/components/secondary/nav/Nav";
-import AppLayout from "@/layouts/common/AppLayout";
-import SEOMetaTags from "@/components/secondary/common/SEOMetaTags";
-import MainLayout from "@/layouts/common/MainLayout";
-import MaxWidthLayout from "@/layouts/common/MaxWidthLayout";
-import { Box, Flex, Pagination, Popover, Radio, Text, UnstyledButton } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { getBooks } from "@/services/api/books";
-import LoadingState from "@/components/secondary/common/LoadingState";
-import RetryButton from "@/components/secondary/common/RetryButton";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { UserBook } from "@/redux/types/book.types";
-import EmptyState from "@/components/secondary/common/EmptyState";
-import BookCard from "@/components/secondary/book/Book";
-import { setBooks } from "@/redux/slices/bookSlice";
-import Input from "@/components/lib/custom/Input";
-import { QueryType, filterBooks } from "@/redux/selectors/bookSelectors";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { User } from "@/redux/types/user.type";
+import { User } from "@/redux/types/user.types";
 import { getAuthors } from "@/services/api/user";
+import { setBooks } from "@/redux/slices/books";
+import Input from "@/components/lib/custom/Input";
+import AppLayout from "@/layouts/common/AppLayout";
+import MainLayout from "@/layouts/common/MainLayout";
+import { filterBooks } from "@/redux/selectors/books";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import BookCard from "@/components/secondary/book/Book";
+import MaxWidthLayout from "@/layouts/common/MaxWidthLayout";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import type { Book, QueryType } from "@/redux/types/book.types";
+import EmptyState from "@/components/secondary/common/EmptyState";
+import SEOMetaTags from "@/components/secondary/common/SEOMetaTags";
+import RetryButton from "@/components/secondary/common/RetryButton";
+import LoadingState from "@/components/secondary/common/LoadingState";
+import { Box, Flex, Pagination, Popover, Radio, Text, UnstyledButton } from "@mantine/core";
 
 export default function Books() {
   const dispatch = useAppDispatch()
@@ -67,11 +67,11 @@ export default function Books() {
                     type="text"
                     value={query}
                     placeholder="Filter books by name"
+                    className='w-full border-[#D0D5DD] focus:outline-none border-2 px-3 py-2 rounded-[10px] text-[#525050] transition duration-75 delay-75 ease-linear placeholder:text-sm placeholder:text-[#98A2B3]'
                     onChange={({ target }) => {
                       setQueryType('byName')
                       setQuery(target.value)
                     }}
-                    className='w-full border-[#D0D5DD] focus:outline-none border-2 px-3 py-2 rounded-[10px] text-[#525050] transition duration-75 delay-75 ease-linear placeholder:text-sm placeholder:text-[#98A2B3]'
                   />
                 </Box>
 
@@ -86,10 +86,10 @@ export default function Books() {
                       <Flex className="rounded-[8px] h-[3rem] items-center bg-gray-100 px-3 space-x-2">
                         <Box>
                           <Icon
-                            icon="mingcute:filter-line"
                             width="20"
                             height="20"
                             color="#8c8c8c"
+                            icon="mingcute:filter-line"
                           />
                         </Box>
 
@@ -127,11 +127,15 @@ export default function Books() {
                         )}
 
                         {authors.data && (
-                          <Box className="space-y-3">
+                          <Box className="space-y-5">
+                            <Text className="text-lg text-[#090A04]">
+                              All authors
+                            </Text>
+
                             {authors.data.map((author: User, index: number) => (
                               <Radio
                                 key={index}
-                                color="#03045E"
+                                color="#090A04"
                                 value={`${author.firstName} ${author.lastName}`}
                                 label={`${author.firstName} ${author.lastName}`}
                               />
@@ -167,7 +171,7 @@ export default function Books() {
                 <Box className="flex flex-col" style={{ height: 'calc(100vh - 142px)' }}>
                   <Box className="flex-grow">
                     <Box className="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 space-y-5 sm:space-y-0 sm:gap-5 lg:gap-8">
-                      {filteredBooks.map((book: UserBook, index: number) => (
+                      {filteredBooks.map((book: Book, index: number) => (
                         <BookCard
                           key={index}
                           data={book}
@@ -178,11 +182,11 @@ export default function Books() {
 
                   <Flex className="justify-end px-3 py-20">
                     <Pagination
-                      total={Math.ceil(books.data.total / 10)}
-                      value={currentPage}
-                      onChange={handlePageChange}
                       radius="md"
                       color="#090A04"
+                      value={currentPage}
+                      onChange={handlePageChange}
+                      total={Math.ceil(books.data.total / 10)}
                     />
                   </Flex>
                 </Box>

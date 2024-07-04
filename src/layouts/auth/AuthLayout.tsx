@@ -5,7 +5,7 @@ import Logo from '@/components/secondary/common/Logo'
 import { BackgroundImage, Box } from '@mantine/core'
 import MaxWidthLayout from '../common/MaxWidthLayout'
 
-type Props = { children: React.ReactNode }
+interface Props { children: React.ReactNode }
 
 export default function AuthLayout({ children }: Props) {
   return (

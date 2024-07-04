@@ -1,12 +1,12 @@
 import React from 'react'
 import { Box } from '@mantine/core'
-import MaxWidthLayout from '../common/MaxWidthLayout'
 import AppLayout from '../common/AppLayout'
-import Nav from '@/components/secondary/nav/Nav'
 import MainLayout from '../common/MainLayout'
+import Nav from '@/components/secondary/nav/Nav'
+import MaxWidthLayout from '../common/MaxWidthLayout'
 import AccountSideNav from '@/components/secondary/nav/AccountSideNav'
 
-type Props = { children: React.ReactNode }
+interface Props { children: React.ReactNode }
 
 export default function AccountLayout({ children }: Props) {
   return (

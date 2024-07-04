@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon } from '@iconify/react';
-import { Text, Box, UnstyledButton, Modal } from '@mantine/core'
 import { UseMutationResult } from "@tanstack/react-query";
+import { Text, Box, UnstyledButton, Modal } from '@mantine/core'
 
 interface Props {
   opened: boolean;
@@ -13,12 +13,12 @@ const DeleteAccountModal = ({ mutation, opened, close }: Props) => {
   return (
     <React.Fragment>
       <Modal
-        withCloseButton={false}
+        centered
+        size={450}
+        radius={12}
         opened={opened}
         onClose={close}
-        radius={12}
-        size={450}
-        centered
+        withCloseButton={false}
         overlayProps={{
           style: { backgroundColor: '#D9D9D966' }
         }}

@@ -2,13 +2,13 @@ import React from 'react'
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
 import Input from '../../lib/custom/Input';
+import Form from '@/components/lib/custom/Form';
 import { UseFormReturnType } from '@mantine/form';
 import Logo from '@/components/secondary/common/Logo';
+import type { InitialValuesType } from '@/pages/register';
 import { UseMutationResult } from '@tanstack/react-query';
 import { RegistrationData } from '@/services/types/auth.types';
 import { Box, Flex, Text, Title, UnstyledButton } from '@mantine/core';
-import { InitialValuesType } from '@/pages/register';
-import Form from '@/components/lib/custom/Form';
 
 interface Props {
   handleRegister: (values: InitialValuesType) => void
@@ -110,11 +110,11 @@ export default function RegistrationForm({
             >
               {mutation.isPending ?
                 <Icon
-                  className={`animate-spin mx-auto`}
-                  icon="icomoon-free:spinner2"
-                  color="white"
                   width="20"
                   height="20"
+                  color="white"
+                  icon="icomoon-free:spinner2"
+                  className={`animate-spin mx-auto`}
                 /> :
                 'Create Account'
               }

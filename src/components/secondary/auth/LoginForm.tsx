@@ -4,11 +4,11 @@ import { Icon } from '@iconify/react';
 import Form from '../../lib/custom/Form';
 import Input from '../../lib/custom/Input';
 import { UseFormReturnType } from '@mantine/form';
+import type { InitialValuesType } from '@/pages/login';
 import Logo from '@/components/secondary/common/Logo';
-import { LoginData } from '@/services/types/auth.types';
 import { UseMutationResult } from '@tanstack/react-query';
+import type { LoginData } from '@/services/types/auth.types';
 import { Box, Flex, Text, Title, UnstyledButton } from '@mantine/core';
-import { InitialValuesType } from '@/pages/login';
 
 type Props = {
   handleLogin: (values: InitialValuesType) => void;

@@ -1,4 +1,4 @@
-import { User } from '../types/model.types';
+import type { User } from '../types/model.types';
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
 const UserSchema: Schema<User> = new Schema({
@@ -27,6 +27,10 @@ const UserSchema: Schema<User> = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Book'
   }],
+  readingList: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Book'
+  }],
 });
 
 UserSchema.set('toJSON', {
@@ -35,8 +39,7 @@ UserSchema.set('toJSON', {
     ret: Record<string, any>,
     _options: mongoose.ToObjectOptions
   ) {
-    const { __v, password, ...object } = ret;
-    delete object.__v;
+    const { password, ...object } = ret;
     delete object.password;
 
     return object;

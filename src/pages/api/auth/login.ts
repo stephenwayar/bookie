@@ -4,7 +4,7 @@ import User from "@/backend/models/User";
 import { ENCRYPTION_KEY } from "@/config/env";
 import connectToDatabase from "@/backend/config/mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { ErrorResponse, LoginDataResponse } from "@/backend/types/res.types";
+import type { ErrorResponse, LoginDataResponse } from "@/backend/types/response.types";
 
 export default async function handler(
   req: NextApiRequest,
@@ -36,15 +36,6 @@ export default async function handler(
       id: user._id,
       email: user.email
     };
-
-    if (!ENCRYPTION_KEY) {
-      console.log('SECRET environment variable is not defined');
-
-      return res.status(500).json({
-        success: false,
-        message: "Internal server error",
-      });
-    }
 
     const token = jwt.sign(userForToken, ENCRYPTION_KEY, { expiresIn: '1d' });
 

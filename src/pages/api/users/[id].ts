@@ -1,8 +1,8 @@
+import User from "@/backend/models/User";
 import connectToDatabase from "@/backend/config/mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { ErrorResponse } from "@/backend/types/res.types";
+import { ErrorResponse } from "@/backend/types/response.types";
 import { extractAndValidateToken } from "@/backend/middlewares/extractAndValidateToken";
-import User from "@/backend/models/User";
 
 async function GET(
   req: NextApiRequest,
@@ -13,20 +13,21 @@ async function GET(
   try {
     const { id } = req.query;
 
-    if (!id) {
-      return res.status(400).json({
-        success: false,
-        message: 'User ID is required',
+    const user = await User.findById(id)
+      .populate({
+        path: 'books',
+        populate: {
+          path: 'author',
+          model: 'User',
+        },
+      })
+      .populate({
+        path: 'readingList',
+        populate: {
+          path: 'author',
+          model: 'User',
+        },
       });
-    }
-
-    const user = await User.findById(id).populate({
-      path: 'books',
-      populate: {
-        path: 'author',
-        model: 'User',
-      },
-    });
 
     if (!user) {
       return res.status(404).json({
@@ -59,13 +60,6 @@ async function PUT(
 
     const { id } = req.query;
     const { firstName, lastName, phoneNumber } = req.body;
-
-    if (!id) {
-      return res.status(400).json({
-        success: false,
-        message: 'User ID is required',
-      });
-    }
 
     const updatedUser = await User.findByIdAndUpdate(
       id,
@@ -103,13 +97,6 @@ async function DELETE(
     if (!decryptedToken) return
 
     const { id } = req.query;
-
-    if (!id) {
-      return res.status(400).json({
-        success: false,
-        message: 'User ID is required',
-      });
-    }
 
     const deletedUser = await User.findByIdAndDelete(id);
 

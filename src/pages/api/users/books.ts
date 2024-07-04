@@ -1,8 +1,8 @@
-import connectToDatabase from "@/backend/config/mongoose";
-import type { NextApiRequest, NextApiResponse } from "next";
-import { ErrorResponse } from "@/backend/types/res.types";
-import { extractAndValidateToken } from "@/backend/middlewares/extractAndValidateToken";
 import Book from "@/backend/models/Book";
+import connectToDatabase from "@/backend/config/mongoose";
+import { ErrorResponse } from "@/backend/types/response.types";
+import type { NextApiRequest, NextApiResponse } from "next";
+import { extractAndValidateToken } from "@/backend/middlewares/extractAndValidateToken";
 
 export default async function handler(
   req: NextApiRequest,

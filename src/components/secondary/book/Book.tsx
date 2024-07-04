@@ -1,20 +1,11 @@
-import { Box, Text } from "@mantine/core";
 import React from "react";
-import image from '@/assets/imgs/book.jpg'
-import Image from "next/image";
 import Link from "next/link";
-import { User } from "@/redux/types/user.type";
+import Image from "next/image";
+import { Box, Text } from "@mantine/core";
+import image from '@/assets/imgs/book.jpg'
+import type { Book } from "@/redux/types/book.types";
 
-export type Book = {
-  _id: string;
-  title: string
-  description: string;
-  author: User
-}
-
-interface Props {
-  data: Book
-}
+interface Props { data: Book }
 
 export default function BookCard({ data }: Props) {
   return (
@@ -41,6 +32,6 @@ export default function BookCard({ data }: Props) {
           See details
         </Link>
       </Box>
-    </Box>  
+    </Box>
   )
 }

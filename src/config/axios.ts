@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-import { User, UserKey } from "@/redux/types/user.type";
+import { User, UserKey } from "@/redux/types/user.types";
 import { getCookieItem } from "@/helpers/functions/cookie";
 
 const http: AxiosInstance = axios.create({

@@ -1,21 +1,23 @@
 import React from "react";
 import Image from "next/image";
-import { Box, Flex, Text } from "@mantine/core";
+import { BASE_URL } from "@/config/env";
 import preview from '@/assets/imgs/mac.jpg'
+import { Box, Flex, Text } from "@mantine/core";
 import Nav from "@/components/secondary/nav/Nav";
 import AppLayout from "@/layouts/common/AppLayout";
 import MainLayout from "@/layouts/common/MainLayout";
+import type { User } from "@/redux/types/user.types";
+import type { Book } from "@/redux/types/book.types";
+import BookCard from "@/components/secondary/book/Book";
 import MaxWidthLayout from "@/layouts/common/MaxWidthLayout";
+import EmptyState from "@/components/secondary/common/EmptyState";
 import SEOMetaTags from "@/components/secondary/common/SEOMetaTags";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { User } from "@/redux/types/user.type";
-import { BASE_URL } from "@/config/env";
-import BookCard from "@/components/secondary/book/Book";
-import EmptyState from "@/components/secondary/common/EmptyState";
-import { UserBook } from "@/redux/types/book.types";
 
-export default function Author({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const title = data.author?.email ? `Author | ${data.author.firstName} ${data.author.lastName}` : 'Author Not found'
+export default function Author({ 
+  data 
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const title = data.author?.email ? `${data.author.firstName} ${data.author.lastName}` : 'Author Not found'
 
   return (
     <AppLayout>
@@ -27,7 +29,7 @@ export default function Author({ data }: InferGetServerSidePropsType<typeof getS
         <MaxWidthLayout>
           {data.author?.email ? (
             <Box>
-              <Flex className="mt-10 lg:space-x-10 space-y-10 lg:space-y-0 lg:items-center flex flex-col lg:flex-row">
+              <Box className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
                 <Box className="w-full overflow-hidden">
                   <Image
                     priority
@@ -37,42 +39,44 @@ export default function Author({ data }: InferGetServerSidePropsType<typeof getS
                   />
                 </Box>
 
-                <Box className="w-full space-y-4">
-                  <Text className='font-semibold text-3xl text-[#cc903c]'>
-                    Author Details
-                  </Text>
-
-                  <Flex className="items-start space-x-2">
-                    <Text className='text-2xl whitespace-nowrap text-[#090A04]'>
-                      Full name -
+                <Box className="lg:grid lg:content-center">
+                  <Box className="w-full space-y-4">
+                    <Text className='font-semibold text-3xl text-[#cc903c]'>
+                      Author Details
                     </Text>
 
-                    <Text className='font-semibold truncate text-2xl text-[#090A04]'>
-                      {data.author.firstName} {data.author.lastName}
-                    </Text>
-                  </Flex>
+                    <Flex className="items-start space-x-2">
+                      <Text className='text-2xl whitespace-nowrap text-[#090A04]'>
+                        Full name -
+                      </Text>
 
-                  <Flex className="items-start space-x-2">
-                    <Text className='text-2xl whitespace-nowrap text-[#090A04]'>
-                      Email -
-                    </Text>
+                      <Text className='font-semibold truncate text-2xl text-[#090A04]'>
+                        {data.author.firstName} {data.author.lastName}
+                      </Text>
+                    </Flex>
 
-                    <Text className='font-semibold truncate text-2xl text-[#090A04]'>
-                      {data.author.email} 
-                    </Text>
-                  </Flex>
+                    <Flex className="items-start space-x-2">
+                      <Text className='text-2xl whitespace-nowrap text-[#090A04]'>
+                        Email -
+                      </Text>
 
-                  <Flex className="items-start space-x-2">
-                    <Text className='text-2xl whitespace-nowrap text-[#090A04]'>
-                      Phone number -
-                    </Text>
+                      <Text className='font-semibold truncate text-2xl text-[#090A04]'>
+                        {data.author.email}
+                      </Text>
+                    </Flex>
 
-                    <Text className='font-semibold truncate text-2xl text-[#090A04]'>
-                      {data.author.phoneNumber}
-                    </Text>
-                  </Flex>
+                    <Flex className="items-start space-x-2">
+                      <Text className='text-2xl whitespace-nowrap text-[#090A04]'>
+                        Phone number -
+                      </Text>
+
+                      <Text className='font-semibold truncate text-2xl text-[#090A04]'>
+                        {data.author.phoneNumber}
+                      </Text>
+                    </Flex>
+                  </Box>
                 </Box>
-              </Flex>
+              </Box>
 
               <Box className='space-y-6 mt-10 mb-20'>
                 <Text className='font-semibold text-3xl text-[#cc903c]'>
@@ -82,7 +86,7 @@ export default function Author({ data }: InferGetServerSidePropsType<typeof getS
                 {data.author && (
                   data.author.books.length > 0 ? (
                     <Box className="sm:grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 space-y-5 sm:space-y-0 sm:gap-5">
-                      {data.author.books.map((book: UserBook, index: number) => (
+                      {data.author.books.map((book: Book, index: number) => (
                         <BookCard
                           key={index}
                           data={book}

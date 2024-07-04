@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Box, Divider, Flex, Text, UnstyledButton } from "@mantine/core";
-import { Icon } from "@iconify/react/dist/iconify.js";
 import { useRouter } from "next/router";
 import Input from "@/components/lib/custom/Input";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { Box, Divider, Flex, Text, UnstyledButton } from "@mantine/core";
 
 export default function Search() {
   const { push } = useRouter()
@@ -48,8 +48,8 @@ export default function Search() {
           <Input 
             type="text"
             value={query}
-            placeholder="Search books"
             onChange={({ target }) => setQuery(target.value)}
+            placeholder="Search book by title, author's first name or last name"
             className="border-none bg-transparent focus:outline-none w-full py-1 px-2 placeholder:text-sm placeholder:text-[#090A04] text-[#090A04]"
           />
         </Box>
@@ -64,10 +64,10 @@ export default function Search() {
             <Flex className="items-center justify-between space-x-[4px]">
               <Box className="w-[18px] h-[18px]">
                 <Icon
-                  icon='iconamoon:search'
-                  color='white'
                   width="16"
                   height="16"
+                  color='white'
+                  icon='iconamoon:search'
                 />
               </Box>
 

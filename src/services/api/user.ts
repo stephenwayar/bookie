@@ -35,3 +35,10 @@ export const getAuthor = async (id: string) => {
 
   return res.data;
 }
+
+export const mutateReadingList = async ({ bookId }: { bookId: string }) => {
+  const url = `/api/users/reading-list`
+  const res = await http.post(url, { bookId });
+
+  return res.data;
+}

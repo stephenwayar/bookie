@@ -1,7 +1,7 @@
 import Book from "@/backend/models/Book";
 import connectToDatabase from "@/backend/config/mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { ErrorResponse } from "@/backend/types/res.types";
+import { ErrorResponse } from "@/backend/types/response.types";
 import { extractAndValidateToken } from "@/backend/middlewares/extractAndValidateToken";
 
 async function GET(
@@ -20,7 +20,22 @@ async function GET(
       });
     }
 
-    const book = await Book.findById(id).populate('author');
+    const book = await Book.findById(id)
+      .populate('author')
+      .populate({
+        path: 'ratings',
+        populate: {
+          path: 'user',
+          model: 'User'
+        }
+      })
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'user',
+          model: 'User'
+        }
+      });
 
     if (!book) {
       return res.status(404).json({
@@ -76,7 +91,21 @@ async function PUT(
       id,
       { $set: updatedFields },
       { new: true, runValidators: true }
-    ).populate('author');
+    ).populate('author')
+      .populate({
+        path: 'ratings',
+        populate: {
+          path: 'user',
+          model: 'User'
+        }
+      })
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'user',
+          model: 'User'
+        }
+      });
 
     if (!updatedBook) {
       return res.status(404).json({

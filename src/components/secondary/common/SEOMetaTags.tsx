@@ -2,13 +2,13 @@ import React from 'react';
 import Head from 'next/head';
 
 interface SEOMetaTagsProps {
-  title: string;
-  ogType?: string;
-  twitterUsername?: string
-  description?: string;
-  keywords?: string;
-  image?: string;
   url?: string;
+  title: string;
+  image?: string;
+  ogType?: string;
+  keywords?: string;
+  description?: string;
+  twitterUsername?: string
 }
 
 const SEOMetaTags: React.FC<SEOMetaTagsProps> = ({

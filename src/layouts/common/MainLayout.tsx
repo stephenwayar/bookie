@@ -1,11 +1,11 @@
 import React from 'react'
 import { Box } from '@mantine/core'
 
-type Props = {
-  children: React.ReactNode;
+interface Props {
   pt?: string;
   pb?: string;
   py?: string;
+  children: React.ReactNode;
 }
 
 export default function MainLayout({

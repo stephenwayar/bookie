@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { ENCRYPTION_KEY } from "@/config/env";
 import { NextApiRequest, NextApiResponse } from "next";
-import { DecryptedToken, ErrorResponse } from "../types/res.types";
+import { DecryptedToken, ErrorResponse } from "../types/response.types";
 
 export async function extractAndValidateToken(
   req: NextApiRequest,
@@ -19,10 +19,6 @@ export async function extractAndValidateToken(
   const token = authHeader.split(" ")[1];
 
   try {
-    if (!ENCRYPTION_KEY) {
-      throw new Error("Encryption key is not defined");
-    }
-
     const decryptedToken = jwt.verify(token, ENCRYPTION_KEY) as DecryptedToken;
 
     return decryptedToken;

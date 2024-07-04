@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Box } from '@mantine/core';
 
-type Props = { children: React.ReactNode };
+interface Props { children: React.ReactNode }
 
 export default function AuthBackgroundLayout({ children }: Props) {
   useEffect(() => {

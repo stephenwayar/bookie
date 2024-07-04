@@ -7,9 +7,9 @@ import store from "@/redux/store";
 import { Provider } from "react-redux";
 import { theme } from '@/styles/ts/theme';
 import { MantineProvider } from '@mantine/core';
-import { setUser } from "@/redux/slices/userSlice";
-import { User, UserKey } from "@/redux/types/user.type";
+import { setUser } from "@/redux/slices/user";
 import { decryptData } from "@/helpers/functions/encryption";
+import { UserKey, type User } from "@/redux/types/user.types";
 import type { AppContext, AppInitialProps, AppProps } from "next/app";
 import ErrorBoundary from '@/components/secondary/common/ErrorBoundary';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'

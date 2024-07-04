@@ -1,19 +1,19 @@
 import React from "react"
+import { AxiosError } from "axios";
 import toast from "react-hot-toast";
-import AppLayout from "@/layouts/common/AppLayout"
 import { useRouter } from 'next/router'
 import { useForm } from "@mantine/form";
 import { login } from "@/services/api/auth";
+import { setUser } from "@/redux/slices/user";
+import { useAppDispatch } from "@/redux/hooks";
+import { User } from "@/redux/types/user.types";
+import AppLayout from "@/layouts/common/AppLayout"
 import AuthLayout from "@/layouts/auth/AuthLayout";
 import { useMutation } from "@tanstack/react-query";
 import { LoginData } from "@/services/types/auth.types";
-import AuthBackgroundLayout from "@/layouts/auth/AuthBackgroundLayout";
 import LoginForm from "@/components/secondary/auth/LoginForm";
 import SEOMetaTags from "@/components/secondary/common/SEOMetaTags";
-import { AxiosError } from "axios";
-import { useAppDispatch } from "@/redux/hooks";
-import { setUser } from "@/redux/slices/userSlice";
-import { User } from "@/redux/types/user.type";
+import AuthBackgroundLayout from "@/layouts/auth/AuthBackgroundLayout";
 
 export interface InitialValuesType {
   email: string;

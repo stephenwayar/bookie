@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
-import AccountLayout from "@/layouts/account/AccountLayout";
-import SEOMetaTags from "@/components/secondary/common/SEOMetaTags";
-import { useForm } from "@mantine/form";
 import { AxiosError } from "axios";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { addBook } from "@/services/api/books";
-import NewBookForm from "@/components/secondary/account/NewBookForm";
+import { useForm } from "@mantine/form";
 import { Box, Text } from "@mantine/core";
-import LoadingState from "@/components/secondary/common/LoadingState";
-import EmptyState from "@/components/secondary/common/EmptyState";
-import RetryButton from "@/components/secondary/common/RetryButton";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addNewBook, setUserBooks } from "@/redux/slices/userBooksSlice";
-import { UserBook } from "@/redux/types/book.types";
-import BookCard from "@/components/secondary/book/Book";
+import { addBook } from "@/services/api/books";
 import { getMyBooks } from "@/services/api/user";
+import type { Book } from "@/redux/types/book.types";
+import BookCard from "@/components/secondary/book/Book";
+import AccountLayout from "@/layouts/account/AccountLayout";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import EmptyState from "@/components/secondary/common/EmptyState";
+import SEOMetaTags from "@/components/secondary/common/SEOMetaTags";
+import NewBookForm from "@/components/secondary/account/NewBookForm";
+import { addNewBook, setUserBooks } from "@/redux/slices/userBooks";
+import RetryButton from "@/components/secondary/common/RetryButton";
+import LoadingState from "@/components/secondary/common/LoadingState";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export interface InitialValuesType {
   title: string,
@@ -52,7 +52,7 @@ export default function AddBook() {
 
       toast.error(errorData.message || 'Failed to add new book')
     },
-    onSuccess: (data: UserBook) => {
+    onSuccess: (data: Book) => {
       dispatch(addNewBook(data)) // add book to userBooks slice
       queryClient.invalidateQueries({ queryKey: ['my-books', user?.id] }) // invalidate to fetch new data
 
@@ -113,10 +113,10 @@ const MyBooks = () => {
       {books.data && (
         userBooks.length > 0 ? (
           <Box className="sm:grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 space-y-5 sm:space-y-0 sm:gap-5">
-            {userBooks.map((book: UserBook, index: number) => (
-              <BookCard 
-                key={index} 
-                data={book} 
+            {userBooks.map((book: Book, index: number) => (
+              <BookCard
+                key={index}
+                data={book}
               />
             ))}
           </Box>

@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server'
-import { UserKey } from './redux/types/user.type';
+import { UserKey } from './redux/types/user.types';
 
 export function middleware(request: NextRequest) {
   let isLoggedIn = false;
@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
   const cookieUser = request.cookies.get(UserKey.BOOKIED_USER);
 
   // List of authentication pages
-  const authPages = [ '/login', '/register'];
+  const authPages = ['/login', '/register'];
 
   // Check if the user exists
   if (cookieUser) {

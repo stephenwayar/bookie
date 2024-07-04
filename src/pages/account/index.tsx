@@ -1,16 +1,16 @@
 import React from "react";
+import { AxiosError } from "axios";
+import toast from "react-hot-toast";
+import { useForm } from "@mantine/form";
+import { setUser } from "@/redux/slices/user";
+import { User } from "@/redux/types/user.types";
+import { updateProfile } from "@/services/api/user";
+import { useMutation } from "@tanstack/react-query";
 import AccountLayout from "@/layouts/account/AccountLayout";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { UpdateProfileData } from "@/services/types/user.types";
 import SEOMetaTags from "@/components/secondary/common/SEOMetaTags";
 import ProfileDetailsForm from "@/components/secondary/account/ProfileDetailsForm";
-import { useForm } from "@mantine/form";
-import { useMutation } from "@tanstack/react-query";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import toast from "react-hot-toast";
-import { AxiosError } from "axios";
-import { UpdateProfileData } from "@/services/types/user.types";
-import { updateProfile } from "@/services/api/user";
-import { setUser } from "@/redux/slices/userSlice";
-import { User } from "@/redux/types/user.type";
 
 export interface InitialValuesType {
   first_name: string,
@@ -62,7 +62,7 @@ export default function Account() {
       };
 
       dispatch(setUser(updatedUser as User));
-    
+
       toast.success('Profile details updated')
     },
   })
@@ -81,7 +81,7 @@ export default function Account() {
     <AccountLayout>
       <SEOMetaTags title="Account | Personal Details" />
 
-      <ProfileDetailsForm 
+      <ProfileDetailsForm
         form={form}
         mutation={mutation}
         handleSubmit={handleSubmit}

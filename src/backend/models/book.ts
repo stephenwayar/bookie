@@ -1,7 +1,7 @@
 import mongoose, { Schema, Model } from 'mongoose';
-import { IBook } from '../types/model.types';
+import type { Book } from '../types/model.types';
 
-const BookSchema: Schema<IBook> = new Schema({
+const BookSchema: Schema<Book> = new Schema({
   title: {
     type: String,
     required: true,
@@ -15,8 +15,16 @@ const BookSchema: Schema<IBook> = new Schema({
     type: String,
     required: true,
   },
+  ratings: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Rating'
+  }],
+  reviews: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Review'
+  }],
 });
 
-const Book: Model<IBook> = mongoose.models.Book || mongoose.model<IBook>('Book', BookSchema);
+const Book: Model<Book> = mongoose.models.Book || mongoose.model<Book>('Book', BookSchema);
 
 export default Book;

@@ -1,16 +1,20 @@
 /* eslint-disable no-var */
 import mongoose, { Mongoose } from 'mongoose';
+import Review from '../models/Review';
+import Book from '@/backend/models/Book'; 
+import User from '@/backend/models/User';
 import { MONGODB_URI } from '@/config/env';
+import Rating from '@/backend/models/Rating';
 
 if (!MONGODB_URI) {
   throw new Error('Please add your Mongo URI to .env.local');
 }
 
-/**
- * Global is used here to maintain a cached connection across hot reloads
- * in development. This prevents connections growing exponentially
- * during API Route usage.
- */
+/*
+ * Global is used here to maintain a cached 
+ * connection across hot reloads in development. 
+ * This prevents connections growing exponentially during API Route usage.
+*/
 
 interface MongooseCache {
   conn: Mongoose | null;
@@ -37,6 +41,12 @@ async function connectToDatabase(): Promise<Mongoose> {
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      // Ensure models are registered
+      mongoose.model('Book', Book.schema);
+      mongoose.model('User', User.schema);
+      mongoose.model('Rating', Rating.schema);
+      mongoose.model('Review', Review.schema);
+
       return mongoose;
     });
   }

@@ -1,10 +1,10 @@
+import mongoose from "mongoose";
 import Book from "@/backend/models/Book";
+import User from "@/backend/models/User";
 import connectToDatabase from "@/backend/config/mongoose";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { ErrorResponse } from "@/backend/types/res.types";
+import { ErrorResponse } from "@/backend/types/response.types";
 import { extractAndValidateToken } from "@/backend/middlewares/extractAndValidateToken";
-import User from "@/backend/models/User";
-import mongoose from "mongoose";
 
 async function GET(
   req: NextApiRequest,
@@ -19,15 +19,32 @@ async function GET(
     if (query) {
       const regex = new RegExp(query as string, 'i');
 
-      const searchResults = await Book.find({
-        $or: [
-          { title: { $regex: regex } },
-          { description: { $regex: regex } }
-        ]
-      }).populate('author').limit(5);
+      const searchResults = await Book.aggregate([
+        {
+          $lookup: {
+            from: 'users', // The name of the users collection
+            localField: 'author',
+            foreignField: '_id',
+            as: 'author'
+          }
+        },
+        {
+          $match: {
+            $or: [
+              { title: { $regex: regex } },
+              { description: { $regex: regex } },
+              { 'author.firstName': { $regex: regex } },
+              { 'author.lastName': { $regex: regex } }
+            ]
+          }
+        },
+        { $limit: 5 }
+      ])
+
+      const books = await Book.populate(searchResults, { path: 'author' });
 
       return res.status(200).json({
-        books: searchResults,
+        books
       });
     }
 
@@ -89,7 +106,7 @@ async function POST(
     const user = await User.findById(decryptedToken.id);
 
     if (user) {
-      user.books.push(newBook._id as mongoose.ObjectId);
+      user.books.push(newBook._id as mongoose.Schema.Types.ObjectId);
       await user.save();
     }
 

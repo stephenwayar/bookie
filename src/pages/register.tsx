@@ -1,16 +1,16 @@
 import React from "react"
 import toast from "react-hot-toast";
-import AppLayout from "@/layouts/common/AppLayout"
-import AuthLayout from "@/layouts/auth/AuthLayout";
+import { AxiosError } from "axios";
 import { useRouter } from 'next/router'
 import { useForm } from "@mantine/form";
 import { register } from "@/services/api/auth";
+import AppLayout from "@/layouts/common/AppLayout"
+import AuthLayout from "@/layouts/auth/AuthLayout";
 import { useMutation } from "@tanstack/react-query";
-import AuthBackgroundLayout from "@/layouts/auth/AuthBackgroundLayout";
 import { RegistrationData } from "@/services/types/auth.types";
 import SEOMetaTags from "@/components/secondary/common/SEOMetaTags";
+import AuthBackgroundLayout from "@/layouts/auth/AuthBackgroundLayout";
 import RegistrationForm from "@/components/secondary/auth/RegistrationForm";
-import { AxiosError } from "axios";
 
 export interface InitialValuesType {
   first_name: string,

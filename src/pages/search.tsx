@@ -1,19 +1,21 @@
 import React from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Nav from "@/components/secondary/nav/Nav";
-import AppLayout from "@/layouts/common/AppLayout";
-import SEOMetaTags from "@/components/secondary/common/SEOMetaTags";
-import MainLayout from "@/layouts/common/MainLayout";
-import MaxWidthLayout from "@/layouts/common/MaxWidthLayout";
+import { BASE_URL } from "@/config/env";
 import { Box, Text } from "@mantine/core";
 import { useRouter } from "next/router";
+import Nav from "@/components/secondary/nav/Nav";
+import AppLayout from "@/layouts/common/AppLayout";
+import MainLayout from "@/layouts/common/MainLayout";
+import type { Book } from "@/redux/types/book.types";
+import BookCard from "@/components/secondary/book/Book";
+import MaxWidthLayout from "@/layouts/common/MaxWidthLayout";
 import { truncateText } from "@/helpers/functions/truncateText";
 import EmptyState from "@/components/secondary/common/EmptyState";
-import { Book } from "@/components/secondary/book/Book";
-import BookCard from "@/components/secondary/book/Book";
-import { BASE_URL } from "@/config/env";
+import SEOMetaTags from "@/components/secondary/common/SEOMetaTags";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
-export default function SearchPage({ result }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function SearchPage({ 
+  result 
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { query } = useRouter()
 
   return (

@@ -1,7 +1,7 @@
 import mongoose, { Schema, Model } from 'mongoose';
-import type { Book } from '../types/model.types';
+import type { Book as BookType } from '../types/model.types';
 
-const BookSchema: Schema<Book> = new Schema({
+const BookSchema: Schema<BookType> = new Schema({
   title: {
     type: String,
     required: true,
@@ -25,6 +25,6 @@ const BookSchema: Schema<Book> = new Schema({
   }],
 });
 
-const Book: Model<Book> = mongoose.models.Book || mongoose.model<Book>('Book', BookSchema);
+const Book: Model<BookType> = mongoose.models.Book || mongoose.model<BookType>('Book', BookSchema);
 
 export default Book;

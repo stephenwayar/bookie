@@ -1,7 +1,7 @@
 import mongoose, { Schema, Model } from 'mongoose';
-import type { Rating } from '../types/model.types';
+import type { Rating as RatingType } from '../types/model.types';
 
-const RatingSchema: Schema<Rating> = new Schema({
+const RatingSchema: Schema<RatingType> = new Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -15,6 +15,6 @@ const RatingSchema: Schema<Rating> = new Schema({
   },
 });
 
-const Rating: Model<Rating> = mongoose.models.Rating || mongoose.model<Rating>('Rating', RatingSchema);
+const Rating: Model<RatingType> = mongoose.models.Rating || mongoose.model<RatingType>('Rating', RatingSchema);
 
 export default Rating;

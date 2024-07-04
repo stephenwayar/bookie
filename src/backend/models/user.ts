@@ -1,7 +1,7 @@
-import type { User } from '../types/model.types';
+import type { User as UserType } from '../types/model.types';
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
-const UserSchema: Schema<User> = new Schema({
+const UserSchema: Schema<UserType> = new Schema({
   firstName: {
     type: String,
     required: true,
@@ -46,6 +46,6 @@ UserSchema.set('toJSON', {
   }
 });
 
-const User: Model<User> = mongoose.models.User || mongoose.model<User>('User', UserSchema);
+const User: Model<UserType> = mongoose.models.User || mongoose.model<UserType>('User', UserSchema);
 
 export default User;

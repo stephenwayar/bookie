@@ -17,6 +17,18 @@
 
 Next.js API routes were used to set up the backend services, utilizing pages as API routes. All source code, including tests, are in the `src` directory following a consistent and simple folder structure to ensure scalability and readability for developers. 🗂️📂
 
+## Protected Routes
+
+Protected routes are implemented using Next.js middleware to ensure secure access to certain parts of the application.
+
+### Implementation
+
+- **Middleware**: Next.js middleware functions check for valid user cookie.
+- **Protected Areas**:
+  - /account/
+  - /account/add-book/
+  - /account/reading-lust/
+
 ## Deployment and Hosting
 
 - **Project URL:** [Bookie](https://bookie-psi.vercel.app/)
@@ -30,9 +42,7 @@ The MongoDB URI and other environment variables are shared privately for securit
 2. Run `npm install` to install packages.
 3. Run `npm run dev` to start the development server. 🛠️👨‍💻
 
-
 ---
-
 
 ## Features Implemented
 
@@ -104,3 +114,13 @@ The MongoDB URI and other environment variables are shared privately for securit
 
 - **Deployment**:
     - Deployed frontend on Vercel with CI/CD pipelines.
+
+---
+
+## Author
+
+**Name**: Stephen Bulus
+
+**X (formerly Twitter)**: [@stephenwayar](https://x.com/stephenwayar)
+
+**Email**: [stephenbuluswayar@gmail.com](mailto:stephenbuluswayar@gmail.com)

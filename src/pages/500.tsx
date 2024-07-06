@@ -25,17 +25,17 @@ export default function ServerDown() {
             />
           </Box>
 
-          <Text className="text-[#090A04] text-center text-4xl font-semibold">
+          <Text className="text-[#090A04] text-center dark:bg-[#333333] text-4xl font-semibold">
             Oops!
           </Text>
 
-          <Text className="text-[#667085] text-center text-lg">
+          <Text className="text-[#667085] text-center dark:bg-[#333333] text-lg">
             There was a problem from our end
           </Text>
 
           <Box className="text-center">
             <Link href="/">
-              <UnstyledButton className="bg-[#cc903c] hover:bg-[#cc903cdf] text-white h-[45px] rounded-lg text-center w-36">
+              <UnstyledButton className="bg-[#cc903c] hover:bg-[#cc903cdf] text-white h-[45px] rounded-lg text-center dark:bg-[#333333] w-36">
                 Go home
               </UnstyledButton>
             </Link>

@@ -95,7 +95,7 @@ const MyBooks = () => {
 
   return (
     <Box className='space-y-6'>
-      <Text className='font-semibold text-lg text-[#090A04]'>
+      <Text className='font-semibold text-lg dark:text-[#e0e0e0] text-[#090A04]'>
         My Books
       </Text>
 

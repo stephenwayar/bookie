@@ -4,7 +4,7 @@ import { UserKey } from './redux/types/user.types';
 export function middleware(request: NextRequest) {
   let isLoggedIn = false;
 
-  const cookieUser = request.cookies.get(UserKey.BOOKIED_USER);
+  const cookieUser = request.cookies.get(UserKey.BOOKIE_USER);
 
   // List of authentication pages
   const authPages = ['/login', '/register'];

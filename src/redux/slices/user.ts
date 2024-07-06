@@ -12,7 +12,7 @@ export const userSlice = createSlice({
       state.value = action.payload
 
       if (typeof document !== 'undefined' && action.payload) {
-        setCookieItem(UserKey.BOOKIED_USER, action.payload);
+        setCookieItem(UserKey.BOOKIE_USER, action.payload);
       }
     },
   },

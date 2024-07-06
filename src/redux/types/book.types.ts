@@ -32,7 +32,7 @@ export interface Review {
   __v: number;
 }
 
-export type Book = {
+export interface Book {
   author: User
   _id: string;
   title: string;

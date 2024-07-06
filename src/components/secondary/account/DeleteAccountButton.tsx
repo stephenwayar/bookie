@@ -34,7 +34,7 @@ export default function DeleteAccountButton() {
 
       setTimeout(() => {
         dispatch(setUser(null))
-        cookie.remove(UserKey.BOOKIED_USER)
+        cookie.remove(UserKey.BOOKIE_USER)
         push('/')
       }, 2000)
     },
@@ -49,7 +49,7 @@ export default function DeleteAccountButton() {
               <Icon
                 color='#DC180C'
                 width="20" height="20"
-                icon='heroicons:trash' 
+                icon='heroicons:trash'
               />
             </Box>
 

@@ -1,17 +1,12 @@
 import React from "react";
-import Image from "next/image";
-import { Box } from "@mantine/core";
-import logo from '@/assets/imgs/logo.png'
+import { Box, Text } from "@mantine/core";
 
 export default function Logo() {
   return (
-    <Box className="w-[150px]">
-      <Image
-        priority
-        src={logo}
-        alt="logo icon"
-        className='w-[150px]'
-      />
+    <Box>
+      <Text className="text-3xl font-bold font-mono dark:text-[#e0e0e0] transition duration-[200ms] delay-75 ease-linear">
+        Bookie
+      </Text>
     </Box>
   )
 }

@@ -13,4 +13,7 @@ export type User = {
 
 export type UserState = { value: User | null }
 
-export enum UserKey { BOOKIED_USER = 'bookie-user' }
+export enum UserKey {
+  BOOKIE_USER = 'bookie-user',
+  BOOKIE_PREFERENCE = 'bookie-preference',
+}

@@ -19,7 +19,7 @@ export default function BookCard({ data }: Props) {
         />
       </Box>
 
-      <Box className="p-3">
+      <Box className="p-3 dark:bg-[#e0e0e0]">
         <Text className="text-lg font-semibold text-[#1D1D1B] truncate">
           {data.title}
         </Text>

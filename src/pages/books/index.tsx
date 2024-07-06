@@ -47,6 +47,16 @@ export default function Books() {
     setCurrentPage(page)
   }
 
+  // Create a set of unique author names from books.data if it exists
+  const authorNamesFromBooks = books.data ? new Set(
+    books.data.books.map((book: Book) => `${book.author.firstName} ${book.author.lastName}`)
+  ) : new Set();
+
+  // Filter authors.data based on authorNamesFromBooks if both exist
+  const authorsOnPage = books.data && authors.data ? authors.data.filter((author: User) =>
+    authorNamesFromBooks.has(`${author.firstName} ${author.lastName}`)
+  ) : [];
+
   return (
     <AppLayout>
       <SEOMetaTags title="Bookie | Library" />
@@ -56,7 +66,7 @@ export default function Books() {
       <MainLayout pt="pt-5">
         <MaxWidthLayout>
           <Flex className="items-center justify-between">
-            <Text className="font-semibold text-3xl">
+            <Text className="font-semibold dark:text-[#e0e0e0] text-3xl">
               Library
             </Text>
 
@@ -67,7 +77,7 @@ export default function Books() {
                     type="text"
                     value={query}
                     placeholder="Filter books by name"
-                    className='w-full border-[#D0D5DD] focus:outline-none border-2 px-3 py-2 rounded-[10px] text-[#525050] transition duration-75 delay-75 ease-linear placeholder:text-sm placeholder:text-[#98A2B3]'
+                    className='w-full border-[#D0D5DD] dark:bg-[#e0e0e0] focus:outline-none border-2 px-3 py-2 rounded-[10px] text-[#525050] transition duration-75 delay-75 ease-linear placeholder:text-sm placeholder:text-[#98A2B3]'
                     onChange={({ target }) => {
                       setQueryType('byName')
                       setQuery(target.value)
@@ -83,7 +93,7 @@ export default function Books() {
                 >
                   <Popover.Target>
                     <UnstyledButton>
-                      <Flex className="rounded-[8px] h-[3rem] items-center bg-gray-100 px-3 space-x-2">
+                      <Flex className="rounded-[8px] h-[3rem] items-center dark:bg-[#e0e0e0] bg-gray-100 px-3 space-x-2">
                         <Box>
                           <Icon
                             width="20"
@@ -127,12 +137,12 @@ export default function Books() {
                         )}
 
                         {authors.data && (
-                          <Box className="space-y-5">
-                            <Text className="text-lg text-[#090A04]">
-                              All authors
+                          <Box className="space-y-6">
+                            <Text className="text-sm font-semibold text-[#090A04]">
+                              Authors on this page
                             </Text>
 
-                            {authors.data.map((author: User, index: number) => (
+                            {authorsOnPage.map((author: User, index: number) => (
                               <Radio
                                 key={index}
                                 color="#090A04"

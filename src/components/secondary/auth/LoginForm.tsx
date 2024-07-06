@@ -45,7 +45,7 @@ export default function LoginForm({
                 label='Email'
                 placeholder="john@example.com"
                 disabled={mutation.isPending}
-                className={`w-full ${form.errors.email ? 'border-red-500 focus:outline-red-500' : 'border-[#D0D5DD] focus:outline-[#090A04]'} border-[1.5px] px-3 py-3 rounded-[4px] text-[#525050] transition duration-75 delay-75 ease-linear placeholder:text-sm placeholder:text-[#98A2B3]`}
+                className={`w-full ${form.errors.email ? 'border-red-500 focus:outline-red-500' : 'border-[#D0D5DD] focus:outline-[#090A04]'} border-[1.5px] px-3 py-3 rounded-[4px] text-[#525050] transition duration-75 delay-75 ease-linear placeholder:text-sm dark:bg-[#e0e0e0] placeholder:text-[#98A2B3]`}
               />
             </Box>
 
@@ -56,7 +56,7 @@ export default function LoginForm({
                 label='Password'
                 placeholder="******"
                 disabled={mutation.isPending}
-                className={`w-full ${form.errors.password ? 'border-red-500 focus:outline-red-500' : 'border-[#D0D5DD] focus:outline-[#090A04]'} border-[1.5px] px-3 py-3 rounded-[4px] text-[#525050] transition duration-75 delay-75 ease-linear placeholder:text-sm placeholder:text-[#98A2B3]`}
+                className={`w-full ${form.errors.password ? 'border-red-500 focus:outline-red-500' : 'border-[#D0D5DD] focus:outline-[#090A04]'} border-[1.5px] dark:bg-[#e0e0e0] px-3 py-3 rounded-[4px] text-[#525050] transition duration-75 delay-75 ease-linear placeholder:text-sm placeholder:text-[#98A2B3]`}
               />
             </Box>
 
@@ -75,7 +75,7 @@ export default function LoginForm({
             <UnstyledButton
               disabled={mutation.isPending}
               type='submit'
-              className='w-full disabled:opacity-50 h-[3.5rem] text-white text-center rounded-md font-semibold py-2 px-3 bg-[#090A04] transition duration-75 delay-75 ease-linear hover:shadow-md hover:bg-[#090a04e0]'
+              className='w-full disabled:opacity-50 h-[3.5rem] text-white dark:bg-[#333333] text-center rounded-md font-semibold py-2 px-3 bg-[#090A04] transition duration-75 delay-75 ease-linear hover:shadow-md hover:bg-[#090a04e0]'
             >
               {mutation.isPending ?
                 <Icon

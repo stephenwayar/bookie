@@ -7,8 +7,8 @@ export default function Document() {
       <Head>
         <ColorSchemeScript defaultColorScheme="auto" />
       </Head>
-      
-      <body className='transition duration-150 delay-[50ms] ease-linear'>
+
+      <body className='transition duration-100 ease-linear'>
         <Main />
         <NextScript />
       </body>

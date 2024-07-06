@@ -25,14 +25,17 @@ export default function AccountLayout({ children }: Props) {
           <Drawer 
             opened={opened} 
             onClose={close}
+            padding={0}
           >
-            <AccountSideNav />
+            <Box className='dark:bg-[#333333] px-8 h-screen'>
+              <AccountSideNav />
+            </Box>
           </Drawer>
 
           <Box className='lg:ml-[20rem] xl:ml-[25rem]'>
             <Box className='lg:pl-10 pt-8 pb-20 space-y-5'>
               <Box className='lg:hidden flex justify-end'>
-                <UnstyledButton onClick={open} className='bg-[#090A04] text-white py-2 px-4 rounded-md text-center text-sm'>
+                <UnstyledButton onClick={open} className='bg-[#090A04] text-white py-2 px-4 dark:bg-[#333333] rounded-md text-center text-sm'>
                   Open nav
                 </UnstyledButton>
               </Box>

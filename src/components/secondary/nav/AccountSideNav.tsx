@@ -23,9 +23,9 @@ export default function AccountSideNav() {
   ]
 
   return (
-    <Box className='lg:w-[20rem] xl:w-[25rem] h-[90vh] fixed overflow-y-auto lg:border-r-2 border-neutral-200 pt-8 pb-20'>
+    <Box className='lg:w-[20rem] xl:w-[25rem] h-[90vh] fixed overflow-y-auto lg:border-r-2 border-neutral-200 dark:border-[#2a2a2a] pt-8 pb-20'>
       <Box>
-        <Text className='font-semibold text-lg text-[#090A04]'>
+        <Text className='font-semibold dark:text-[#e0e0e0] text-lg text-[#090A04]'>
           Account
         </Text>
       </Box>

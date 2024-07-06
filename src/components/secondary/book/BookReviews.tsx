@@ -1,20 +1,20 @@
-import { Box, Flex, Text, UnstyledButton } from "@mantine/core";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import avatar from '@/assets/imgs/avatar.png'
 import Link from "next/link";
-import { addReview, getReviews } from "@/services/api/books";
-import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
-import LoadingState from "../common/LoadingState";
-import RetryButton from "../common/RetryButton";
-import { useRouter } from "next/router";
-import type { Review } from "@/redux/types/book.types";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addNewReview, setBookReviews } from "@/redux/slices/bookReviews";
-import TextArea from "@/components/lib/custom/TextArea";
+import Image from "next/image";
 import { AxiosError } from "axios";
 import toast from "react-hot-toast";
+import { useRouter } from "next/router";
+import avatar from '@/assets/imgs/avatar.png'
+import RetryButton from "../common/RetryButton";
+import LoadingState from "../common/LoadingState";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import type { Review } from "@/redux/types/book.types";
+import TextArea from "@/components/lib/custom/TextArea";
+import { addReview, getReviews } from "@/services/api/books";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { Box, Flex, Text, UnstyledButton } from "@mantine/core";
+import { addNewReview, setBookReviews } from "@/redux/slices/bookReviews";
+import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
 
 export default function BookReviews() {
   const { query } = useRouter()
@@ -49,7 +49,7 @@ export default function BookReviews() {
       {reviews.data && (
         bookReviews.length > 0 ? (
           <Box className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <Box>
+            <Box className="dark:bg-[#e0e0e0] h-fit p-4">
               {bookReviews.map((review: Review, index: number) => (
                 <Review
                   key={index}
@@ -58,7 +58,7 @@ export default function BookReviews() {
               ))}
             </Box>
 
-            <Box className="space-y-4">
+            <Box className="space-y-4 dark:bg-[#e0e0e0] p-4">
               <Text className="text-[#090A04] text-xl">
                 Add review
               </Text>
@@ -68,7 +68,7 @@ export default function BookReviews() {
           </Box>
         ) : (
           <Box className="w-full lg:max-w-[50%]">
-            <Text className="text-[#090A04] text-xl">
+            <Text className="text-[#090A04] dark:text-[#e0e0e0] text-xl">
               There are no reviews yet. Be the first to review!
             </Text>
 
@@ -84,7 +84,7 @@ interface ReviewProps { data: Review }
 
 const Review: React.FC<ReviewProps> = ({ data }) => {
   return (
-    <Box className="space-y-3 py-4 border-b-2">
+    <Box className="space-y-3 py-4 border-b-2 dark:border-[#090A04]">
       <Flex className="items-center space-x-3">
         <Box>
           <Box className="h-12 w-12 rounded-full">
@@ -160,7 +160,7 @@ export const ReviewForm = () => {
           type='button'
           onClick={handleSubmit}
           disabled={mutation.isPending || !value}
-          className='w-full disabled:cursor-not-allowed disabled:opacity-50 h-[3.5rem] text-white text-center rounded-md font-semibold py-2 px-3 bg-[#090A04] transition duration-75 delay-75 ease-linear hover:shadow-md hover:bg-[#090a04e0]'
+          className='w-full disabled:cursor-not-allowed disabled:opacity-50 h-[3.5rem] text-white dark:bg-[#333333] text-center rounded-md font-semibold py-2 px-3 bg-[#090A04] transition duration-75 delay-75 ease-linear hover:shadow-md hover:bg-[#090a04e0]'
         >
           {mutation.isPending ?
             <Icon

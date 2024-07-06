@@ -24,7 +24,7 @@ export default function ReadingList() {
       <SEOMetaTags title="Account | Reading List" />
 
       <Box className='space-y-6'>
-        <Text className='font-semibold text-lg text-[#090A04]'>
+        <Text className='font-semibold dark:text-[#e0e0e0] text-lg text-[#090A04]'>
           My Reading Lists
         </Text>
 

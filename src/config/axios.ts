@@ -14,7 +14,7 @@ const httpNoAuth: AxiosInstance = axios.create({
 http.interceptors.request.use(async config => {
   if (typeof document !== 'undefined') {
     // Client request: retrieve the user information from the cookies.
-    const user: User = getCookieItem(UserKey.BOOKIED_USER);
+    const user: User = getCookieItem(UserKey.BOOKIE_USER);
     // Extract the JWT token from the user data.
     const jwt = user?.access_token;
     // Construct the authorization token if JWT is present.

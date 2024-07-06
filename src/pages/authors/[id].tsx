@@ -39,7 +39,7 @@ export default function Author({
                   />
                 </Box>
 
-                <Box className="lg:grid lg:content-center">
+                <Box className="lg:grid lg:content-center dark:bg-[#e0e0e0] p-4">
                   <Box className="w-full space-y-4">
                     <Text className='font-semibold text-3xl text-[#cc903c]'>
                       Author Details

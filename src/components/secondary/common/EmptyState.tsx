@@ -23,11 +23,11 @@ export default function EmptyState({ message, withImage = true }: Props) {
           </Box>
         )}
 
-        <Text className="text-[#090A04] text-center text-4xl font-semibold">
+        <Text className="text-[#090A04] dark:text-[#e0e0e0] text-center text-4xl font-semibold">
           Oops! 
         </Text>
 
-        <Text className="text-[#667085] text-center text-lg">
+        <Text className="text-[#667085] dark:text-[#e0e0e0] text-center text-lg">
           {message}
         </Text>
       </Box>

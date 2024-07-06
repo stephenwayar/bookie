@@ -52,16 +52,16 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
                 />
               </Box>
 
-              <Text className="text-[#090A04] text-center text-4xl font-semibold">
+              <Text className="text-[#090A04] dark:text-[#e0e0e0] text-center text-4xl font-semibold">
                 Oops!
               </Text>
 
-              <Text className="text-[#667085] text-center text-lg">
+              <Text className="text-[#667085] dark:text-[#e0e0e0] text-center text-lg">
                 There was a client side error somewhere
               </Text>
 
               <Box className="text-center">
-                <UnstyledButton onClick={() => this.setState({ hasError: false })} className="bg-[#cc903c] hover:bg-[#cc903cdf] text-white h-[45px] rounded-lg text-center w-36">
+                <UnstyledButton onClick={() => this.setState({ hasError: false })} className="bg-[#cc903c] hover:bg-[#cc903cdf] text-white dark:bg-[#333333] h-[45px] rounded-lg text-center w-36">
                   Try again
                 </UnstyledButton>
               </Box>

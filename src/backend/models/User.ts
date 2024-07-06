@@ -35,11 +35,10 @@ const UserSchema: Schema<UserType> = new Schema({
 
 UserSchema.set('toJSON', {
   transform: function (
-    doc: Document<any, any, any>,
+    _doc: Document<any, any, any>,
     ret: Record<string, any>,
-    _options: mongoose.ToObjectOptions
   ) {
-    const { password, ...object } = ret;
+    const { ...object } = ret;
     delete object.password;
 
     return object;

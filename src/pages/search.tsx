@@ -26,7 +26,7 @@ export default function SearchPage({
 
       <MainLayout pt="pt-5">
         <MaxWidthLayout>
-          <Text className="font-semibold text-3xl">
+          <Text className="font-semibold dark:text-[#e0e0e0] text-3xl">
             {query.query ? (
               `You searched for: "${truncateText(query.query as string, 15)}"`
             ) : (

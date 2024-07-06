@@ -43,9 +43,7 @@ async function GET(
 
       const books = await Book.populate(searchResults, { path: 'author' });
 
-      return res.status(200).json({
-        books
-      });
+      return res.status(200).json({ books });
     }
 
     // Handle pagination if pageSize and pageNumber are provided
@@ -60,10 +58,7 @@ async function GET(
 
       const total = await Book.countDocuments();
 
-      return res.status(200).json({
-        books,
-        total,
-      });
+      return res.status(200).json({ books, total });
     }
 
     // Default behavior: return all books

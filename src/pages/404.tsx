@@ -25,17 +25,17 @@ export default function NotFound() {
             />
           </Box>
 
-          <Text className="text-[#090A04] text-center text-4xl font-semibold">
+          <Text className="text-[#090A04] dark:text-[#e0e0e0] text-center text-4xl font-semibold">
             Oops!
           </Text>
 
-          <Text className="text-[#667085] text-center text-lg">
+          <Text className="text-[#667085] dark:text-[#e0e0e0] text-center text-lg">
             The page you are looking for does not exist
           </Text>
 
           <Box className="text-center">
             <Link href="/">
-              <UnstyledButton className="bg-[#cc903c] hover:bg-[#cc903cdf] text-white h-[45px] rounded-lg text-center w-36">
+              <UnstyledButton className="bg-[#cc903c] dark:bg-[#333333] hover:bg-[#cc903cdf] text-white h-[45px] rounded-lg text-center w-36">
                 Go home
               </UnstyledButton>
             </Link>

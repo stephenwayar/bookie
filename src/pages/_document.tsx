@@ -1,3 +1,4 @@
+import React from 'react'
 import { ColorSchemeScript } from '@mantine/core';
 import { Head, Html, Main, NextScript } from 'next/document';
 

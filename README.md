@@ -6,7 +6,7 @@
 
 ## Technologies and Languages
 
-- **Programming Language:** TypeScript | JavaScript
+- **Programming Languages:** TypeScript | JavaScript
 - **Frontend Framework:** React & Next.js
 - **Dev Tools & Libraries:** React Query, Redux
 - **UI Framework:** Tailwind CSS & Mantine Component Library
@@ -23,11 +23,14 @@ Protected routes are implemented using Next.js middleware to ensure secure acces
 
 ### Implementation
 
-- **Middleware**: Next.js middleware functions check for valid user cookie.
+- **Middleware**: Next.js middleware function checks for valid user cookie.
 - **Protected Areas**:
   - /account/
   - /account/add-book/
-  - /account/reading-lust/
+  - /account/reading-list/
+
+### Test
+
 
 ## Deployment and Hosting
 

@@ -44,6 +44,7 @@ export default function Books() {
   }, [books.data, books.isSuccess])
 
   const handlePageChange = (page: number) => {
+    setQuery('')
     setCurrentPage(page)
   }
 

@@ -20,7 +20,7 @@ export interface InitialValuesType {
   password: string,
 }
 
-export default function Login() {
+export default function Register() {
   const router = useRouter()
 
   const initialValues: InitialValuesType = {

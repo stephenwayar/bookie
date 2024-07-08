@@ -3,6 +3,8 @@
     "eslint:recommended",
     "next/core-web-vitals",
     "plugin:react/recommended",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/react",
     "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
@@ -95,5 +97,3 @@
     }
   }
 }
-// @typescript-eslint/parser 
-// @typescript-eslint/eslint-plugin

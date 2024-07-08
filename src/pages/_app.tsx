@@ -2,6 +2,7 @@ import '@mantine/core/styles.css';
 import '@mantine/nprogress/styles.css';
 import '@fontsource-variable/inter';
 import "@/styles/css/globals.css";
+import React from 'react';
 import store from "@/redux/store";
 import { Provider } from "react-redux";
 import { useEffect, useRef } from "react";

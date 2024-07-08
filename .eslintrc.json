@@ -19,9 +19,6 @@
     "react",
     "@typescript-eslint"
   ],
-  "files": [
-    "**/__tests__/**/*.*"
-  ],
   "rules": {
     "testing-library/await-async-queries": "off", 
     "@typescript-eslint/no-explicit-any": "off",

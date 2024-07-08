@@ -8,7 +8,6 @@ const config = {
   preset: 'ts-jest',
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
-  transformIgnorePatterns: [],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
@@ -19,6 +18,14 @@ const config = {
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+  },
+  globals: {
+    'ts-jest': {
+      // other ts-jest options
+      diagnostics: {
+        ignoreCodes: ['TestingLibraryElementError'],
+      },
+    },
   },
 };
 

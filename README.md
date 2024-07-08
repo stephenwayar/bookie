@@ -15,7 +15,7 @@
 
 ## Project Structure
 
-Next.js API routes were used to set up the backend services, utilizing pages as API routes. All source code, including tests, are in the `src` directory following a consistent and simple folder structure to ensure scalability and readability for developers. 🗂️📂
+Next.js API routes were used to set up the backend services, utilizing pages as API routes. All source code are in the `src` directory following a consistent and simple folder structure to ensure scalability and readability for developers. 🗂️📂
 
 ## Protected Routes
 

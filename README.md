@@ -29,8 +29,11 @@ Protected routes are implemented using Next.js middleware to ensure secure acces
   - /account/add-book/
   - /account/reading-list/
 
-### Test
+### Testing
 
+Due to Jest configuration issues encountered, tests may not execute as intended. However, unit tests have been diligently written, and all test suites can be found in the `__tests__` directory located at the root of this repository.
+
+To initiate the tests, use the following command: `npm test`
 
 ## Deployment and Hosting
 
